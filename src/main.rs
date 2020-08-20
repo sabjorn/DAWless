@@ -4,7 +4,7 @@ use std::fs::File;
 
 fn main() -> io::Result<()>
 {
-    let buffer = d_in("speech.wav").expect("failed reading file");
+    let buffer = d_in("resources/test_files/speech.wav").expect("failed reading file");
     d_out(buffer, "output.wav").expect("failed writing file");
 
     Ok(())
@@ -30,7 +30,7 @@ fn d_in(filename: &'static str) -> io::Result<Vec<f32>>
     }
 
     Ok(internal_buffer)
-}y
+}
 
 fn d_out(input_data: Vec<f32>, output_file: &'static str) -> io::Result<()>
 {
