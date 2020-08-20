@@ -1,12 +1,17 @@
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
+use std::io::stdout;
 
 fn main() -> io::Result<()>
 {
     let buffer = d_in("speech.wav").expect("failed reading file");
-    d_out(buffer, "output.wav").expect("failed writing file");
-
+    for sample in buffer
+    {
+        let fused_byte: [u8; 4] = unsafe { std::mem::transmute::<f32, [u8; 4]>(sample) };
+        io::stdout().write(&fused_byte).expect("failed to write to stdout");
+    }
+    io::stdout().write(b"");
     Ok(())
 }
 
@@ -30,17 +35,4 @@ fn d_in(filename: &'static str) -> io::Result<Vec<f32>>
     }
 
     Ok(internal_buffer)
-}
-
-fn d_out(input_data: Vec<f32>, output_file: &'static str) -> io::Result<()>
-{
-    let mut f = File::create(output_file)?;
-
-    for sample in input_data
-    {
-        let fused_byte: [u8; 4] = unsafe { std::mem::transmute::<f32, [u8; 4]>(sample) };
-        f.write(&fused_byte)?;
-    }
-
-    Ok(())
 }
