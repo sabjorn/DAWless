@@ -234,3 +234,8 @@ zsdoc/data
 !/tests/_output/.gitkeep
 
 # End of https://www.toptal.com/developers/gitignore/api/rust,macos,linux,osx,clion,zsh,sublimetext
+
+
+#Added by cargo
+
+/target

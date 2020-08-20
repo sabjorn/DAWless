@@ -1,0 +1,7 @@
+[package]
+name = "dawless"
+version = "0.1.0"
+authors = ["Steeve A. Bjornson <info@sabjorn.net>", "SimonZimmer <mail@simonzimmermann.de>"]
+edition = "2018"
+
+[dependencies]

@@ -30,7 +30,7 @@ fn d_in(filename: &'static str) -> io::Result<Vec<f32>>
     }
 
     Ok(internal_buffer)
-}y
+}
 
 fn d_out(input_data: Vec<f32>, output_file: &'static str) -> io::Result<()>
 {
